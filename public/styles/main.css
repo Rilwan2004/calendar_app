@@ -10,8 +10,6 @@
     border-radius: 7px;
 }
 
-
-
 .modal-toggle-btn {
     border: none;
     background: none;
@@ -44,10 +42,8 @@
 }
 
 .task-title {
-    /* padding: 10px 10px 5px 7px; */
     border: none;
     width: 100%;
-    /* border-bottom: 1px solid black; */
     outline: none;
 }
 
@@ -57,10 +53,8 @@
 }
 
 .task {
-    /* padding: 10px 10px 5px 7px; */
     border: none;
     width: 100%;
-    /* border-bottom: 1px solid black; */
     outline: none;
 }
 
@@ -75,7 +69,6 @@
     padding: 3px; 
     font-family: "Roboto Mono", monospace;
     color: #000000;
-    /* font-size: 18px; */
     border: 1px solid rgb(0, 0, 0);
     outline: none;
     border-radius: 5px;
@@ -95,9 +88,7 @@
     border-radius: 5px;
     border: 1px solid rgb(0, 0, 0);
     -webkit-appearance: none;
-    /* Chrome, Safari, Opera */
     -moz-appearance: none;
-    /* Firefox */
     appearance: none;
 }
 
@@ -156,4 +147,33 @@ input[type="checkbox"] {
     gap: 10px;
     justify-content: flex-end;
     color: rgb(79, 79, 79);
+}
+
+/* ✅ Responsive Fixes for Mobile */
+.tasks-list {
+    width: 100%;           /* full width on small screens */
+    max-width: 600px;      /* keep it neat on larger screens */
+    margin-left: auto;
+    margin-right: auto;    /* center content */
+}
+
+.side-details {
+    flex-wrap: wrap;       /* allow wrapping */
+    justify-content: flex-start; /* align left on mobile */
+}
+
+@media (max-width: 576px) {
+    .main-details {
+        flex-direction: column; /* stack content */
+        gap: 5px;
+    }
+
+    .side-details {
+        justify-content: flex-start;
+        font-size: 14px; /* smaller text */
+    }
+
+    .btn {
+        margin-top: 5px; /* space for stacked buttons */
+    }
 }
