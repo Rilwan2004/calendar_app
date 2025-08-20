@@ -1,0 +1,159 @@
+.main-body {
+    display: flex;
+    justify-content: center;
+}
+
+.body-desc {
+    margin-left: 30px;
+    border: 1px solid black;
+    padding: 20px 40px;
+    border-radius: 7px;
+}
+
+
+
+.modal-toggle-btn {
+    border: none;
+    background: none;
+    font-size: larger;
+}
+
+.modal {
+    z-index: 1060;
+    margin-top: 50px;
+}
+
+.modal-button {
+    display: flex;
+    gap: 10px;
+    transition: 0.3s;
+}
+
+.form {
+    border: 1px solid grey;
+    display: inline-block;
+    width: 400px;
+    padding: 7px;
+    border-radius: 10px;
+}
+
+.title-container {
+    display: flex;
+    margin-bottom: 7px;
+    margin-top: 5px;
+}
+
+.task-title {
+    /* padding: 10px 10px 5px 7px; */
+    border: none;
+    width: 100%;
+    /* border-bottom: 1px solid black; */
+    outline: none;
+}
+
+.task-container {
+    display: flex;
+    margin-bottom: 9px;
+}
+
+.task {
+    /* padding: 10px 10px 5px 7px; */
+    border: none;
+    width: 100%;
+    /* border-bottom: 1px solid black; */
+    outline: none;
+}
+
+.task-options {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.time {
+    background-color: #ffffff;
+    padding: 3px; 
+    font-family: "Roboto Mono", monospace;
+    color: #000000;
+    /* font-size: 18px; */
+    border: 1px solid rgb(0, 0, 0);
+    outline: none;
+    border-radius: 5px;
+}
+
+.task-priority {
+    background-color: rgb(255, 255, 255);
+    padding: 3px;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid rgb(0, 0, 0);
+}
+
+.task-type {
+    background-color: rgb(255, 255, 255);
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid rgb(0, 0, 0);
+    -webkit-appearance: none;
+    /* Chrome, Safari, Opera */
+    -moz-appearance: none;
+    /* Firefox */
+    appearance: none;
+}
+
+.checkbox {
+    accent-color: #6f2cff;
+}
+
+.tasks-list {
+    border: 1px solid rgb(207, 207, 207);
+    border-radius: 10px;
+    margin-top: 15px;
+    padding: 15px 10px;
+    width: 50%;     
+}
+.task-list{
+    display: block;
+    justify-content: center;
+}
+
+.task-text p {
+    margin-bottom: 0;
+}
+
+.main-details {
+    display: flex;
+    gap: 10px;
+}
+
+input[type="checkbox"] {
+    transform: scale(1.1);
+}
+
+.title-text {
+    font-size: 17px;
+    color: #000000;
+}
+
+.task-text {
+    color: rgb(123, 123, 123);
+}
+
+.title {
+    max-width: 300px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.task {
+    max-width: 500px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.side-details {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    color: rgb(79, 79, 79);
+}

@@ -1,0 +1,135 @@
+    <%- include("partials/header.ejs") %>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="styles/main.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous" />
+    
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+            <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
+
+    </head>
+
+    <body>
+        <div>
+            <div class="">
+                <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+                    <a href="/"
+                        class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                        <svg class="bi me-2" width="40" height="32" aria-hidden="true">
+                            <use xlink:href="#bootstrap"></use>
+                        </svg>
+                        <span class="fs-4">Calendar Webpage</span>
+                    </a>
+
+                    <ul class="nav nav-pills">
+                        <li class="nav-item">
+                            <a href="/" class="nav-link active" aria-current="page">Home</a>
+                        </li>
+                        <li class="nav-item"><a href="/events" class="nav-link">View Events</a></li>
+                    </ul>
+                </header>
+            </div>
+            <div class="main-body">
+                <div class="body-desc">
+                    <div class="modal-toggle" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                            class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z" />
+                        </svg>
+                        <button type="submit" class="modal-toggle-btn" value="">Create an Event</button> 
+                    </div>
+                </div>
+            </div>
+            <div> 
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" aria-labelledby="exampleModalCenterTitle"
+                    aria-hidden="true" data-bs-backdrop="false">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="/add-event" method="POST">
+                                    <div class="task-details">
+                                        <div class="title-container">
+                                            <input type="text" name="task-title" class="task-title"
+                                                placeholder="Title" />
+                                        </div>
+                                        <div class="task-container">
+                                            <input type="text" name="task" class="task" placeholder="Description"
+                                                id="" value="" />
+                                        </div>
+                                    </div>
+                                    <div class="task-options">
+                                        <div class="task-time">
+                                            <input type="date" name="date" id="" class="time" placeholder="Time" required />
+                                        </div>
+                                        <!-- <div class="custom-select">
+                                            <select name="priority" class="task-priority">
+                                                <option value="p-1" style="color: red">
+                                                    Priority 1
+                                                </option>
+                                                <option value="p-2" style="color: blue">
+                                                    Priority 2
+                                                </option>
+                                                <option value="p-3" style="color: green">
+                                                    Priority 3
+                                                </option>
+                                            </select>
+                                        </div> -->
+                                        <div class="task-time">
+                                            <input type="time" name="time" class="time" id="" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="submit" value="Add Task" class="btn" style="
+                            background-color: #0d6efd;
+                            color: white;
+                            padding: 10px;
+                        ">
+                                            Upload Event
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+        <script>
+            var offcanvasElement = document.getElementById("offcanvasExample");
+            offcanvasElement.addEventListener("shown.bs.offcanvas", function () {
+                document.body.classList.add("offcanvas-open");
+            });
+            offcanvasElement.addEventListener("hidden.bs.offcanvas", function () {
+                document.body.classList.remove("offcanvas-open");
+            });
+
+            var body = document.body;
+            var toggleButton = document.getElementById("toggleButton");
+            var toggleCloseButton = document.getElementById("toggleCloseButton");
+
+            toggleButton.addEventListener("click", function () {
+                body.classList.add("offcanvas-open");
+            });
+
+            toggleCloseButton.addEventListener("click", function name() {
+                body.classList.remove("offcanvas-open");
+            });
+        </script>
+    </body>
+
+    </html>

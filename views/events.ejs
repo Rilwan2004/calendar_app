@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/main.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous" />
+    
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+            <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div>
+        <div class="">
+            <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+                <a href="/"
+                    class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                    <svg class="bi me-2" width="40" height="32" aria-hidden="true">
+                        <use xlink:href="#bootstrap"></use>
+                    </svg>
+                    <span class="fs-4">Calendar Webpage</span>
+                </a>
+
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <a href="/" class="nav-link" aria-current="page">Home</a>
+                    </li>
+                    <li class="nav-item"><a href="/events" class="nav-link active">View Events</a></li>
+                </ul>
+            </header>
+        </div>
+        <div class="task-list">
+            <% if (events.length > 0) { %>       
+            <ul style="list-style-type: none">
+                <% events.forEach(task => { %>
+                <li>
+                    <div class="tasks-list">
+                        <div class="main-details">
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#0d6efd" class="bi bi-check-square-fill" viewBox="0 0 16 16">
+                                    <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm10.03 4.97a.75.75 0 0 1 .011 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.75.75 0 0 1 1.08-.022z"></path>
+                                </svg>
+                            </div>
+                            <div class="task-text">
+                                <div class="title">
+                                    <p class="title-text"><%= task.title %></p>
+                                </div>
+                                <div class="task">
+                                    <p class="task-text"><%= task.task %></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="side-details">
+                            <div><%= task.date %></div>
+                            <div><%= task.priority %></div>
+                            <div><%= task.time %></div>
+                            <!-- Delete button form -->
+                            <button class="btn btn-sm btn-danger" onclick="showDeleteModal('<%= task.id %>', '<%= task.title.replace(/'/g, "\\") %>')"> Delete</button>
+                            <button class="btn btn-sm btn-primary" onclick="showEditModal('<%= task.id %>', '<%= task.title.replace(/'/g, "\\'") %>', '<%= task.task.replace(/'/g, "\\'") %>', '<%= task.date %>', '<%= task.time %>')">Edit</button>
+
+
+</form>
+
+                        </div>
+                    </div>
+                </li>
+                <% }); %>
+            </ul>
+            <% } else { %>
+                <h3>No uploaded events yet</h3>
+              <% } %>
+        </div>
+        
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <form id="deleteForm" method="POST" action="/delete-event">
+        <input type="hidden" name="id" id="deleteEventId">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to delete the event titled "<span id="eventTitle"></span>"?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-danger">Yes, Delete</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- Edit Event Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <form id="editForm" method="POST" action="/edit-event">
+        <input type="hidden" name="id" id="editEventId">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editModalLabel">Edit Event</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="editTitle" class="form-label">Title</label>
+            <input type="text" class="form-control" name="title" id="editTitle" required>
+          </div>
+          <div class="mb-3">
+            <label for="editTask" class="form-label">Task</label>
+            <textarea class="form-control" name="task" id="editTask" required></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="editDate" class="form-label">Date</label>
+            <input type="date" class="form-control" name="date" id="editDate" required>
+          </div>
+          <div class="mb-3">
+            <label for="editTime" class="form-label">Time</label>
+            <input type="time" class="form-control" name="time" id="editTime" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-success">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <script>
+        var offcanvasElement = document.getElementById("offcanvasExample");
+        offcanvasElement.addEventListener("shown.bs.offcanvas", function () {
+            document.body.classList.add("offcanvas-open");
+        });
+        offcanvasElement.addEventListener("hidden.bs.offcanvas", function () {
+            document.body.classList.remove("offcanvas-open");
+        });
+
+        var body = document.body;
+        var toggleButton = document.getElementById("toggleButton");
+        var toggleCloseButton = document.getElementById("toggleCloseButton");
+
+        toggleButton.addEventListener("click", function () {
+            body.classList.add("offcanvas-open");
+        });
+
+        toggleCloseButton.addEventListener("click", function name() {
+            body.classList.remove("offcanvas-open");
+        });
+        function showDeleteModal(eventId, eventTitle) {
+            document.getElementById("deleteEventId").value = eventId;
+            document.getElementById("eventTitle").textContent = eventTitle;
+            const deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
+        deleteModal.show();
+        }
+        function showEditModal(id, title, task, date, time) {
+        document.getElementById("editEventId").value = id;
+        document.getElementById("editTitle").value = title;
+        document.getElementById("editTask").value = task;
+        document.getElementById("editDate").value = date;
+        document.getElementById("editTime").value = time;
+
+        const editModal = new bootstrap.Modal(document.getElementById('editModal'));
+        editModal.show();
+        }
+    </script>
+</body>
+
+</html>
