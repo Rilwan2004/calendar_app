@@ -1,20 +1,24 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import express from "express";
 import bodyParser from "body-parser";
-import fetch from "node-fetch"; // install with: npm install node-fetch
+import fetch from "node-fetch";
 
 const app = express();
 const port = process.env.PORT || 8080;
 
-
 // === Supabase Config ===
-const SUPABASE_URL = "https://hoefwufcdtnwxhobfzfu.supabase.co"; // 🔁 Replace this
-const SUPABASE_API_KEY = "  "; // 🔁 Replace this
+const SUPABASE_URL = process.env.SUPABASE_URL;
+const SUPABASE_API_KEY = process.env.SUPABASE_API_KEY;
 
-let events = [];  // Global array
+console.log("🔑 Supabase URL:", SUPABASE_URL);
+console.log("🔑 Supabase Key exists:", !!SUPABASE_API_KEY);
+
+let events = [];
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
-
 app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
@@ -51,7 +55,7 @@ app.post("/add-event", async (req, res) => {
         "Content-Type": "application/json",
         "Prefer": "return=representation"
       },
-      body: JSON.stringify({ title, task, date, time})
+      body: JSON.stringify({ title, task, date, time })
     });
 
     if (!response.ok) {
@@ -67,5 +71,5 @@ app.post("/add-event", async (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
-  });
+  console.log(`Server running on port ${port}`);
+});

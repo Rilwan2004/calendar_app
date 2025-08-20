@@ -2,7 +2,7 @@
   "dependencies": {
     "axios": "^1.9.0",
     "body-parser": "^2.2.0",
-    "dotenv": "^16.5.0",
+    "dotenv": "^16.6.1",
     "ejs": "^3.1.10",
     "express": "^5.1.0",
     "express-session": "^1.18.1",
@@ -19,7 +19,6 @@
   "type": "module",
   "scripts": {
     "start": "node index.js"
-    
   },
   "author": "rilwan",
   "license": "ISC"
